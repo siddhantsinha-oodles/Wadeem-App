@@ -1,0 +1,111 @@
+{
+ "accept_payment": 0,
+ "allow_comments": 0,
+ "allow_delete": 0,
+ "allow_edit": 1,
+ "allow_incomplete": 0,
+ "allow_multiple": 1,
+ "allow_print": 0,
+ "amount": 0.0,
+ "amount_based_on_field": 0,
+ "apply_document_permissions": 1,
+ "button_label": "Save",
+ "creation": "2020-12-23 16:05:12.047491",
+ "currency": "SAR",
+ "doc_type": "Children",
+ "docstatus": 0,
+ "doctype": "Web Form",
+ "idx": 0,
+ "is_standard": 1,
+ "login_required": 1,
+ "max_attachment_size": 0,
+ "modified": "2021-01-22 18:49:59.242595",
+ "modified_by": "Administrator",
+ "module": "Wadeem",
+ "name": "my-children",
+ "owner": "Administrator",
+ "payment_button_label": "Buy Now",
+ "published": 1,
+ "route": "my-children",
+ "route_to_success_link": 0,
+ "show_attachments": 0,
+ "show_in_grid": 1,
+ "show_sidebar": 0,
+ "sidebar_items": [
+  {
+   "enabled": 1,
+   "route": "/my-children",
+   "title": "My Children"
+  },
+  {
+   "enabled": 1,
+   "route": "/programs",
+   "title": "Programs Register"
+  }
+ ],
+ "success_url": "/my-children",
+ "title": "My Children",
+ "web_form_fields": [
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "Full Name",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "hidden": 0,
+   "label": "Gender",
+   "max_length": 0,
+   "max_value": 0,
+   "options": "Male\nFemale",
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 0,
+   "label": "Image",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "hidden": 0,
+   "label": "Birth Date",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  },
+  {
+   "allow_read_on_all_link_options": 0,
+   "fieldname": "national_id",
+   "fieldtype": "Data",
+   "hidden": 0,
+   "label": "National ID",
+   "max_length": 0,
+   "max_value": 0,
+   "read_only": 0,
+   "reqd": 0,
+   "show_in_filter": 0
+  }
+ ]
+}

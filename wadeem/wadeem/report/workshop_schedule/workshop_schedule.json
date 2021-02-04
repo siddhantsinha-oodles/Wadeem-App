@@ -1,0 +1,75 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "child_id",
+   "fieldtype": "Link",
+   "label": "Child",
+   "options": "Children",
+   "width": 0
+  },
+  {
+   "fieldname": "program_id",
+   "fieldtype": "Link",
+   "label": "Program Name",
+   "options": "Programs",
+   "width": 0
+  },
+  {
+   "fieldname": "workshop_id",
+   "fieldtype": "Link",
+   "label": "Workshop ID",
+   "options": "Enroll Workshops",
+   "width": 0
+  },
+  {
+   "fieldname": "application_status",
+   "fieldtype": "Select",
+   "label": "Application Status",
+   "width": 0
+  }
+ ],
+ "creation": "2021-02-01 21:19:52.497762",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "child_id",
+   "fieldtype": "Link",
+   "label": "Child",
+   "mandatory": 0,
+   "options": "Children",
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "program_id",
+   "fieldtype": "Link",
+   "label": "Program Name",
+   "mandatory": 0,
+   "options": "Programs",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "modified": "2021-02-01 21:29:37.456033",
+ "modified_by": "Administrator",
+ "module": "Wadeem",
+ "name": "Workshop Schedule",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Enroll Children",
+ "report_name": "Workshop Schedule",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Guardians"
+  }
+ ]
+}

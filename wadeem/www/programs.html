@@ -1,0 +1,192 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _('Programs') }}{% endblock %}
+
+{% block head_include %}
+<link rel="stylesheet" type="text/css" href="programs.css">
+{% endblock %}
+
+{% block header %}
+
+<h1 class="w-100 our-workshop-heading text-center font-weight-bold" style="color:#23557d">{{ _('Programs') }}</h1>
+{% endblock header %}
+
+{% block page_content %}
+<p>Duration</p>
+<ul  id="filters">
+    <li>
+        <input  type="checkbox"  value="1 Day" onchange="myFunction(this.value)" id="filter-1_day" />
+        <label for="filter-1_day">1 Day</label>
+    </li>
+    <li>
+        <input type="checkbox"  value="1 Week" onchange="myFunction(this.value)"  id="filter-1_week" />
+        <label for="filter-1_week">1 Week</label>
+    </li>
+    <li>
+        <input  type="checkbox" value="1 Month" onchange="myFunction(this.value)" id="filter-1_month" />
+        <label for="filter-1_month">1 Month</label>
+    </li>
+</ul>
+
+<div id="myLists" class="row price-block common-month-workshops common-workshops-wrapper" style="margin-right:0; margin-left:0;">
+    <input id="myInput" class="form-control input-search" type="text" placeholder="Search..">
+
+    <div class="programs  main-program columns common-online w-100">
+        {% if all_programs %}
+        {% for program in all_programs %}
+        <div class=" common-workshops one-day-wrapper  has-text-centered">
+            <p class=" line para-description">
+                                {{ program.duration }}
+                <input id="duration" type="hidden" value="{{ program.duration }}">
+                            </p>
+            <div class="card-block">
+                <div class="col-md-12 p-0">
+                    <div class="card-body p-0">
+                        <figure class="mb-0">
+                            <a class=" no-underline" href="/programs/{{ program.program_name }}">
+                                <img class="website-image"
+                                     src="{{ program.image}}"
+                                     alt="{{ program.program_name }}">
+                            </a>
+
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-body  has-text-right">
+                        <div class=" pb-0 mb-0" style="box-shadow:none">
+                            <a class="text-dark" href="/programs/{{ program.program_name }}">
+                                <h4>{{ program.program_name}}</h4>
+                            </a>
+                            <p class="line para-description">
+                                {{ program.prog_desc}}
+                            </p>
+                            <p class="line para-description">
+                                {{ program.type}}
+                            </p>
+                            <div class="workshop-price">
+                                 <span class="d-flex justify-content-end align-items-center">
+                                {{  program.selling_price}}
+                                     <strong class="dollar">SR</strong>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/programs/{{ program.program_name }}" class="btn btn-padding red-btn w-100">{{ _('المزيد من التفاصيل') }}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="d-flex justify-content-center p-3 text-muted">{{ _('No Program found') }}</div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+ function test(){ $('#some-div-container').empty(); $('#some-div-container').append( (frappe.session.user_id == 'Guest ? '<a class="navbar-item" href="http://localhost:8000/login"> Login </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> Sign Up </a>' : '<a class="navbar-item" href="http://localhost:8000/login"> Logout </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> My Profile </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> Switch to Desk </a>' ) ); }
+</script>
+
+<script>
+
+    $(document).ready(
+     function () {
+
+        var a = $("input:checkbox").val()
+        if (a == "1 Day") {
+        console.log(this.val())
+         $("#duration").not("[name*='1 Day']").parent().hide();
+        }
+     else if (a == "1 Week") {
+
+
+        }
+     else if (a == "1 Month") {
+     }
+
+});
+   let oneday=false;
+    let oneweek=false;
+    let onemonth=false;
+     function myFunction(a) {
+    debugger;
+    let value='';
+        if(a=='1 Day'){
+          oneday=!oneday;
+          if(oneday){
+          value='1 Day'
+          }
+          else{
+            value='';
+          }
+        }
+
+        else if(a=='1 Week') {
+            oneweek=!oneweek;
+            if(oneweek){
+            value='1 Week'
+            }
+            else{
+            value='';
+            }
+
+        }
+        else if(a=='1 Month') {
+            onemonth=!onemonth;
+            if(onemonth){
+            value='1 Month'
+            }
+            else{
+            value='';
+          }
+
+        }
+
+        $("#myLists .common-workshops").filter(function() {
+
+      $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+    }
+</script>
+<script>
+	$(document).ready(function() {
+  $("body").click(function() {
+    $(".click-user").removeClass("active-header");
+
+});
+$("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myLists .common-workshops").filter(function() {
+        console.log("In mylist");
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+//navbar
+	$(".navbar-burger").click(function(){
+		$(".navbar-burger").toggleClass("is-active");
+		$("#navbar-list").toggle();
+  });
+
+  $(".user-account").click(function(event){
+    $(".click-user").toggleClass("active-header");
+    event.stopPropagation();
+  });
+  $(".click-user").click(function(event){
+    event.stopPropagation();
+  });
+
+$(window).on("scroll", function() {
+  if($(window).scrollTop() > 50) {
+      $(".navbar").addClass("bg-color");
+  } else {
+      //remove the background property so it comes transparent again (defined in your css)
+     $(".navbar").removeClass("bg-color");
+  }
+});
+});
+</script>
+
+{% endblock %}
+

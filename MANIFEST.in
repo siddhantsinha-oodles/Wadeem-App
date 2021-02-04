@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include wadeem *.css
+recursive-include wadeem *.csv
+recursive-include wadeem *.html
+recursive-include wadeem *.ico
+recursive-include wadeem *.js
+recursive-include wadeem *.json
+recursive-include wadeem *.md
+recursive-include wadeem *.png
+recursive-include wadeem *.py
+recursive-include wadeem *.svg
+recursive-include wadeem *.txt
+recursive-exclude wadeem *.pyc

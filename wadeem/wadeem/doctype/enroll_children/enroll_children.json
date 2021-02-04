@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2020-12-23 17:43:28.872249",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "child_id",
+  "program_id",
+  "workshop_id",
+  "amended_from",
+  "application_status",
+  "selling_price"
+ ],
+ "fields": [
+  {
+   "fieldname": "child_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Child",
+   "options": "Children"
+  },
+  {
+   "fieldname": "program_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Program",
+   "options": "Programs"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "workshop_id",
+   "fieldtype": "Table",
+   "label": "Workshop",
+   "options": "Enroll Workshops"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Enroll Children",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Form ID",
+   "options": "EN-",
+   "set_only_once": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Not Enrolled",
+   "fieldname": "application_status",
+   "fieldtype": "Select",
+   "label": "Application Status",
+   "options": "Enrolled\nCompleted\nNot Enrolled"
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Data",
+   "label": "Price"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-02-02 12:35:38.255934",
+ "modified_by": "Administrator",
+ "module": "Wadeem",
+ "name": "Enroll Children",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guardians",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

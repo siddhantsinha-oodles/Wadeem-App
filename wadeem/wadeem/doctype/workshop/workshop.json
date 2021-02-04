@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-01-15 07:43:19.531749",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "workshop_name",
+  "teacher_id",
+  "total_cost",
+  "session_id",
+  "assistant_teacher",
+  "start_date",
+  "end_date",
+  "image",
+  "max_seats"
+ ],
+ "fields": [
+  {
+   "fieldname": "workshop_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Workshop Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "teacher_id",
+   "fieldtype": "Link",
+   "label": "Teacher",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "total_cost",
+   "fieldtype": "Currency",
+   "label": "Total Cost"
+  },
+  {
+   "fieldname": "assistant_teacher",
+   "fieldtype": "Link",
+   "label": "Assistant Teacher",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "session_id",
+   "fieldtype": "Table",
+   "label": "Session",
+   "options": "Workshop_session"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Workshpo ID",
+   "options": "WO-",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "max_seats",
+   "fieldtype": "Int",
+   "label": "Max Seats"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-02-02 12:07:55.449192",
+ "modified_by": "Administrator",
+ "module": "Wadeem",
+ "name": "Workshop",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,88 @@
+{
+ "autoname": "naming_series:",
+ "creation": "2020-11-18 16:42:39.653318",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "employee",
+  "image",
+  "academics",
+  "first_name",
+  "middle_name",
+  "last_name",
+  "type_employment"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "ID Number",
+   "options": "EDU-INS-.YYYY.-",
+   "search_index": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "academics",
+   "fieldtype": "Table",
+   "label": "Academics",
+   "options": "Employee Education"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name"
+  },
+  {
+   "fieldname": "middle_name",
+   "fieldtype": "Data",
+   "label": "Middle Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "type_employment",
+   "fieldtype": "Select",
+   "label": "Type of Employment"
+  }
+ ],
+ "modified": "2020-11-18 18:53:47.022388",
+ "modified_by": "Administrator",
+ "module": "Wadeem",
+ "name": "Coordinators",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
