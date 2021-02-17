@@ -50,10 +50,9 @@ def get_data(filters):
 	data = []
 
 	conditions = get_conditions(filters)
-	enroll_data = frappe.db.get_all("Enroll Children", fields=["name", "program_id","child_id"])
+	enroll_data = frappe.db.get_all("Enroll Children", fields=["name", "program_id","child_id","application_status"])
 	print(enroll_data)
 	for data in enroll_data:
 		row = {"ID": data.name, "Child Name":data.child_id ,"Program Name": data.program_id}
 		data.append(row)
-	print(data)
 	return data

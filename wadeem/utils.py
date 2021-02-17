@@ -20,72 +20,26 @@ def create_item(doc, method):
     item.item_group = 'Services'
     item.is_stock_item = 0
     print("Creating new item")
-    item.save()
+    try:
+        item.save()
+    except Exception as e:
+        print(e)
     return item.name
-
-##testing
-
-def create_customer(doc, method):
-    user = frappe.session.user
-    customer_name = frappe
-    existing_customer_name = frappe.db.get_value("Customer",
-			filters={"name": customer_name}, fieldname="name")
-
-    if existing_customer_name:
-        filters = [
-				["Dynamic Link", "link_doctype", "=", "Customer"],
-				["Dynamic Link", "link_name", "=", existing_customer_name],
-				["Dynamic Link", "parenttype", "=", "Contact"]
-			]
-
-        existing_contacts = frappe.get_list("Contact", filters)
-
-        if existing_contacts:
-            pass
-        else:
-            new_contact = frappe.new_doc("Contact")
-            new_contact.first_name = customer_name
-            new_contact.append('links', {
-				"link_doctype": "Customer",
-				"link_name": existing_customer_name
-			})
-            new_contact.insert()
-
-        return existing_customer_name
-    else:
-        new_customer = frappe.new_doc("Customer")
-        new_customer.customer_name = customer_name
-        new_customer.customer_group = mws_customer_settings.customer_group
-        new_customer.territory = mws_customer_settings.territory
-        new_customer.customer_type = mws_customer_settings.customer_type
-        new_customer.save()
-
-        new_contact = frappe.new_doc("Contact")
-        new_contact.first_name = customer_name
-        new_contact.append('links', {
-			"link_doctype": "Customer",
-			"link_name": new_customer.name
-		})
-
-        new_contact.insert()
-
-        return new_customer.name
 
 
 def create_sales_order(doc, method):
-    print("Doc Name", doc.name)
-    user = frappe.get_doc('User', frappe.session.user)
 
-    print(frappe.get_roles())
+    user = frappe.get_doc('User', frappe.session.user)
+    customer = frappe.get_doc('Customer', {'owner': user.name})
+    print(customer.customer_name)
     item_code = doc.workshop_id[0].workshop_id
     item = frappe.get_doc('Item', f"Workshop-{item_code}")
-    print(item.name)
     so = frappe.new_doc("Sales Order")
-    so.customer_name = user.get_fullname()
+    so.customer_name = customer.customer_name
     so.set_warehouse = ""
     so.transaction_date = date.today()
     so.company = frappe.defaults.get_defaults().company
-    so.customer = frappe.session.user
+    so.customer = customer.customer_name
     so.currency = frappe.defaults.get_defaults().currency
     so.selling_price_list = frappe.defaults.get_defaults().default_price_list
     so.delivery_date = today()
@@ -99,9 +53,12 @@ def create_sales_order(doc, method):
     })
     so.payment_schedule = []
     so.flags.ignore_mandatory = True
-    so.save(ignore_permissions=True)
-    so.submit()
-    print("SO created")
+    try:
+        so.save(ignore_permissions=True)
+        so.submit()
+        print("SO created")
+    except Exception as e:
+        print("Sales order not created",e)
     return
 
 def set_default_role(doc, method):

@@ -12,22 +12,42 @@
 {% endblock header %}
 
 {% block page_content %}
-<p>Duration</p>
-<ul  id="filters">
-    <li>
-        <input  type="checkbox"  value="1 Day" onchange="myFunction(this.value)" id="filter-1_day" />
-        <label for="filter-1_day">1 Day</label>
+<p class="text-right" style="color: #23557d;
+font-size: 24px;
+margin-bottom: 21px;
+font-weight: 500;">Duration</p>
+<ul  class="d-flex flex-wrap justify-content-end" style="margin-bottom:12px;">
+    <li class="hide-checkbox-1">
+        <input class="w-auto h-auto d-inline-block" type="checkbox"   value="1 Day" onchange="myFunction(this.value)" id="filter-1_day" />
+        <label class="d-inline-block" for="filter-1_day">1 Day</label>
     </li>
-    <li>
-        <input type="checkbox"  value="1 Week" onchange="myFunction(this.value)"  id="filter-1_week" />
-        <label for="filter-1_week">1 Week</label>
+    <li class="hide-checkbox-2">
+        <input class=" d-inline-block w-auto h-auto " type="checkbox"  value="1 Week" onchange="myFunction(this.value)"  id="filter-1_week" />
+        <label class="d-inline-block" for="filter-1_week">1 Week</label>
     </li>
-    <li>
-        <input  type="checkbox" value="1 Month" onchange="myFunction(this.value)" id="filter-1_month" />
-        <label for="filter-1_month">1 Month</label>
+    <li class="hide-checkbox-3">
+        <input class="d-inline-block w-auto h-auto " type="checkbox"  value="1 Month" onchange="myFunction(this.value)" id="filter-1_month" />
+        <label class="pr-0 d-inline-block" for="filter-1_month">1 Month</label>
     </li>
 </ul>
-
+<!--<p class="text-right" style="color: #23557d;-->
+<!--font-size: 24px;-->
+<!--margin-bottom: 21px;-->
+<!--font-weight: 500;">Type</p>-->
+<!--<ul  class="d-flex flex-wrap justify-content-end" style="margin-bottom:12px;">-->
+<!--    <li class="hide-checkbox-1">-->
+<!--        <input class="w-auto h-auto d-inline-block" type="checkbox"   value="" onchange="myFunction(this.value)" id="filter-1_day" />-->
+<!--        <label class="d-inline-block" for="filter-1_day">1 Day</label>-->
+<!--    </li>-->
+<!--    <li class="hide-checkbox-2">-->
+<!--        <input class=" d-inline-block w-auto h-auto " type="checkbox"  value="1 Week" onchange="myFunction(this.value)"  id="filter-1_week" />-->
+<!--        <label class="d-inline-block" for="filter-1_week">1 Week</label>-->
+<!--    </li>-->
+<!--    <li class="hide-checkbox-3">-->
+<!--        <input class="d-inline-block w-auto h-auto " type="checkbox"  value="1 Month" onchange="myFunction(this.value)" id="filter-1_month" />-->
+<!--        <label class="pr-0 d-inline-block" for="filter-1_month">1 Month</label>-->
+<!--    </li>-->
+<!--</ul>-->
 <div id="myLists" class="row price-block common-month-workshops common-workshops-wrapper" style="margin-right:0; margin-left:0;">
     <input id="myInput" class="form-control input-search" type="text" placeholder="Search..">
 
@@ -85,9 +105,6 @@
 
 {% endblock %}
 {% block script %}
-<script>
- function test(){ $('#some-div-container').empty(); $('#some-div-container').append( (frappe.session.user_id == 'Guest ? '<a class="navbar-item" href="http://localhost:8000/login"> Login </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> Sign Up </a>' : '<a class="navbar-item" href="http://localhost:8000/login"> Logout </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> My Profile </a> <a class="navbar-item" href="http://localhost:8000/login#signup"> Switch to Desk </a>' ) ); }
-</script>
 
 <script>
 
@@ -111,10 +128,12 @@
     let oneweek=false;
     let onemonth=false;
      function myFunction(a) {
-    debugger;
     let value='';
         if(a=='1 Day'){
           oneday=!oneday;
+<!--          $(".hide-checkbox-2").css("pointer-events", "none");-->
+          $(".hide-checkbox-2").toggleClass("event-none");
+          $(".hide-checkbox-3").toggleClass("event-none");
           if(oneday){
           value='1 Day'
           }
@@ -125,6 +144,8 @@
 
         else if(a=='1 Week') {
             oneweek=!oneweek;
+            $(".hide-checkbox-1").toggleClass("event-none");
+          $(".hide-checkbox-3").toggleClass("event-none");
             if(oneweek){
             value='1 Week'
             }
@@ -135,6 +156,8 @@
         }
         else if(a=='1 Month') {
             onemonth=!onemonth;
+            $(".hide-checkbox-1").toggleClass("event-none");
+          $(".hide-checkbox-2").toggleClass("event-none");
             if(onemonth){
             value='1 Month'
             }
@@ -158,8 +181,7 @@
 });
 $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#myLists .common-workshops").filter(function() {
-        console.log("In mylist");
+    $("#inputList .common-workshops").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

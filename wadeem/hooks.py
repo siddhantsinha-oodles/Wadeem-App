@@ -27,20 +27,14 @@ doc_events = {
 	},
 	"Children": {
 		"after_insert": "wadeem.utils.create_link"
-	},
-	'Enroll Children': {
-		"after_insert": "wadeem.utils.create_sales_order"
-	},
+	}
 }
 
 website_route_rules = [
-	{"from_route": "/programs/<program_name>", "to_route": "Programs"},
-{"from_route": "/enrolled", "to_route": "Enroll Children"},
-
+	{"from_route": "/programs/<program_name>", "to_route": "Programs"}
 ]
 default_roles = [
-	{'role': 'Customer', 'doctype':'Contact', 'email_field': 'email_id'},
-	{'role': 'Guardian', 'doctype':'Guardians', 'email_field': 'email'}
+	{'role': 'Customer', 'doctype':'Customer', 'email_field': 'email_id'}
 ]
 
 

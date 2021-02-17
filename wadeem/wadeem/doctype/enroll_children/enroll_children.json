@@ -12,7 +12,10 @@
   "workshop_id",
   "amended_from",
   "application_status",
-  "selling_price"
+  "selling_price",
+  "sales_order_id",
+  "sales_invoice_id",
+  "enrollment_date"
  ],
  "fields": [
   {
@@ -66,11 +69,29 @@
    "fieldname": "selling_price",
    "fieldtype": "Data",
    "label": "Price"
+  },
+  {
+   "fieldname": "sales_order_id",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "sales_invoice_id",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "enrollment_date",
+   "fieldtype": "Date",
+   "label": "Enrollment Date"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2021-02-02 12:35:38.255934",
+ "modified": "2021-02-08 14:46:14.895484",
  "modified_by": "Administrator",
  "module": "Wadeem",
  "name": "Enroll Children",

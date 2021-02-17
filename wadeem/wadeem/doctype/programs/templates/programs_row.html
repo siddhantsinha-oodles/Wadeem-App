@@ -149,7 +149,8 @@ function onClickPurchase(event) {
 			success_dialog.show();
 			const origin = window.location.origin
 			const redirect_path = origin + '/' + 'enroll' + '?name=' + res.message.name
-            window.location.replace(redirect_path);
+			const redirect_path_2 = origin + '/' + 'orders'
+            window.location.replace(redirect_path_2);
        })
     }
     else if ($("#type").val() == 'Parents') {

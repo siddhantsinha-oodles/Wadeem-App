@@ -318,9 +318,9 @@ select:focus, input:focus {
 .btn{
 	font-size: 1.6rem;
 	color: #fff;
-	border-radius: 15px; 
+	border-radius: 15px;
 	font-family: 'Almarai', sans-serif;
-	font-weight: 500;	
+	font-weight: 500;
 	padding: 3px 15px;
 	font-size: 1.6rem;
 	transition: all 0.5s ease-in-out;
@@ -351,7 +351,7 @@ select:focus, input:focus {
 }
 .web-footer{
     display:none;
-    
+
 }
 .navbar.is-fixed-top{
 	z-index: 99;
@@ -538,12 +538,12 @@ footer p{
 	-ms-user-select: none;
 	user-select: none;
 	border-radius:4px
-	
+
   }
   .btn-checkbox-wrapper{
-	padding-left: 0px; 
+	padding-left: 0px;
   }
-  
+
   /* Hide the browser's default checkbox */
   .checkbox-wrapper input {
 	position: absolute;
@@ -552,7 +552,7 @@ footer p{
 	height: 0;
 	width: 0;
   }
-  
+
   /* Create a custom checkbox */
   .checkmark-main {
 		position: absolute;
@@ -563,29 +563,29 @@ footer p{
 	  width: 17.97px;
 	  background-color: #eee;
   }
-  
+
   /* On mouse-over, add a grey background color */
   .checkbox-wrapper:hover input ~ .checkmark-main {
 	background-color: #ccc;
   }
-  
+
   /* When the checkbox is checked, add a blue background */
   .checkbox-wrapper input:checked ~ .checkmark-main {
 	background-color: #E579AE;
   }
-  
+
   /* Create the checkmark/indicator (hidden when not checked) */
   .checkmark-main:after {
 	content: "";
 	position: absolute;
 	display: none;
   }
-  
+
   /* Show the checkmark when checked */
   .checkbox-wrapper input:checked ~ .checkmark-main:after {
 	display: block;
   }
-  
+
   /* Style the checkmark/indicator */
   .checkbox-wrapper .checkmark-main:after {
 	left: 6px;
@@ -603,7 +603,7 @@ footer p{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	/* Some browsers will not display the caret when using calc, so we put the fallback first */ 
+	/* Some browsers will not display the caret when using calc, so we put the fallback first */
 	background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") rgb(250, 252, 255) no-repeat 98.5% !important; /* !important used for overriding all other customisations */
 	background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") rgb(250, 252, 255) no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
   }
@@ -614,17 +614,17 @@ footer p{
 	position: relative;
 	font-family: Arial;
   }
-  
+
   .custom-select select {
 	display: none; /*hide original SELECT element:*/
   }
-  
+
   .select-selected {
 	color: #23557d !important;
 	padding-top:10px !important ;
 	background-color: #FAFCFF;
   }
-  
+
   /*style the arrow inside the select element:*/
   .select-selected:after {
 	position: absolute;
@@ -639,13 +639,13 @@ footer p{
     border-left: 2px solid transparent;
     transform: rotate(45deg);
   }
-  
+
   /*point the arrow upwards when the select box is open (active):*/
   .select-selected.select-arrow-active:after {
 	top: 15px;
     transform: rotate(-136deg);
   }
-  
+
   /*style the items (options), including the selected item:*/
   .select-items div,.select-selected {
 	color: #23557d !important;
@@ -669,16 +669,16 @@ footer p{
 	border: 1px solid #BDCFF1;
     border-radius: 15px;
   }
-  
+
   /*hide the items when the select box is closed:*/
   .select-hide {
 	display: none;
   }
-  
+
   .select-items div:hover, .same-as-selected {
 	background-color: rgba(0, 0, 0, 0.1);
   }
-  
+
 .content-wrap {
 	padding: 98px 0 0;
 }
@@ -1982,7 +1982,7 @@ padding:32px 15px;}
   font-size:10.6px
 }
 
-  
+
   .circle-section-wrapper .common-text-circle strong{
   display:block;
   text-align: center;
@@ -1993,7 +1993,7 @@ padding:32px 15px;}
     display:block;
     text-align: center;
   }
- 
+
   .know-menu li {
     padding: 25px 30px;
     display: flex;
@@ -2130,7 +2130,7 @@ margin-right:1.25%;
   .navbar .is-fixed-top {
     display: flex;
   }
-.navbar-brand{ 
+.navbar-brand{
     width:auto;
 }
   .slick-dots {
@@ -2457,7 +2457,7 @@ margin-right:1.25%;
    .circle-section-wrapper .right-text {
     right: 14%;
     top: 44%;
-} 
+}
 .circle-section-wrapper .left-text {
   left: 14.3%;
   top: 21%;
@@ -2867,4 +2867,7 @@ font-size:10.6px
   .btn-padding{
 margin-bottom:0px !important;
 }
+}
+.event-none{
+pointer-events:none;
 }

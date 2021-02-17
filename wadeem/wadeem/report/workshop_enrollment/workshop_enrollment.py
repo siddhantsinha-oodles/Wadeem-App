@@ -18,15 +18,15 @@ def execute(filters=None):
 def get_columns(filters):
     columns = [
         {
-            "label": _("Program ID"),
+            "label": _("Workshop ID"),
             "fieldtype": "Data",
-            "fieldname": "program_id",
+            "fieldname": "workshop_id",
             "width": 100
         },
         {
-            "label": _("Program Name"),
+            "label": _("Workshop Name"),
             "fieldtype": "Data",
-            "fieldname": "program_name",
+            "fieldname": "workshop_name",
             "width": 200
         },
         {
@@ -57,27 +57,32 @@ def get_data(filters):
     # conditions = get_conditions(filters)
 
     query = """SELECT 
-                `tabEnroll Children`.program_id AS program_id,
-                `tabPrograms`.name AS name,
-               `tabPrograms`.program_name AS program_name,
-                COUNT(`tabEnroll Children`.program_id) AS total_enrollments
+                `tabEnroll Workshops`.workshop_id AS workshop_id,
+                `tabWorkshop`.name AS name,
+               `tabWorkshop`.workshop_name AS workshop_name,
+                COUNT(`tabEnroll Children`.name) AS total_enrollments
     			FROM `tabEnroll Children`
-    			LEFT JOIN `tabPrograms` ON `tabEnroll Children`.program_id = `tabPrograms`.name
-    			WHERE `tabEnroll Children`.application_status = 'Enrolled'
-    			GROUP BY `tabPrograms`.name
-    			ORDER BY `tabPrograms`.name"""
+    			LEFT JOIN `tabEnroll Workshops` ON `tabEnroll Children`.name = `tabEnroll Workshops`.parent
+    			LEFT JOIN `tabWorkshop` ON `tabEnroll Workshops`.workshop_id = `tabWorkshop`.name
+    			WHERE `tabEnroll Workshops`.workshop_id IS NOT NULL
+    			 AND `tabEnroll Children`.application_status = 'Enrolled'
+    			GROUP BY `tabWorkshop`.name
+    			ORDER BY `tabWorkshop`.name"""
 
     map_results = frappe.db.sql(query, filters,as_dict=1)
     print(map_results)
     query_2 = """SELECT 
-                    `tabEnroll Parents`.program_id AS program_id,
-                    `tabPrograms`.name AS name,
-                   `tabPrograms`.program_name AS program_name,
-                    COUNT(`tabEnroll Parents`.program_id) AS total_enrollments
-        			FROM `tabEnroll Parents`
-        			LEFT JOIN `tabPrograms` ON `tabEnroll Parents`.program_id = `tabPrograms`.name
-        			GROUP BY `tabPrograms`.name
-        			ORDER BY `tabPrograms`.name"""
+                `tabEnroll Workshops`.workshop_id AS workshop_id,
+                `tabWorkshop`.name AS name,
+               `tabWorkshop`.workshop_name AS workshop_name,
+                COUNT(`tabEnroll Parents`.name) AS total_enrollments
+    			FROM `tabEnroll Children`
+    			LEFT JOIN `tabEnroll Workshops` ON `tabEnroll Parents`.name = `tabEnroll Workshops`.parent
+    			LEFT JOIN `tabWorkshop` ON `tabEnroll Workshops`.workshop_id = `tabWorkshop`.name
+    			WHERE `tabEnroll Workshops`.workshop_id IS NOT NULL
+    			    AND `tabEnroll Children`.application_status = 'Enrolled'
+    			GROUP BY `tabWorkshop`.name
+    			ORDER BY `tabWorkshop`.name"""
     map_results_2 = frappe.db.sql(query_2, filters,as_dict=1)
     print("2nd",map_results_2)
     for item in map_results_2:
@@ -86,8 +91,8 @@ def get_data(filters):
     print("3rd", map_results)
     for test in map_results:
         data.append({
-            'program_id': test.program_id,
-            "program_name": test.program_name,
+            'workshpo_id': test.workshop_id,
+            "workshop_name": test.workshop_name,
             'total_enrollments': test.total_enrollments,
         })
 
